@@ -101,3 +101,5 @@ webpack干啥的，
 ![Route of Web](https://github.com/Liny777/Job_Perparation/raw/master/Photo/weblearnpath2.png)
 ![Route of Web](https://github.com/Liny777/Job_Perparation/raw/master/Photo/weblearnpath3.png)
 ![Route of Web](https://github.com/Liny777/Job_Perparation/raw/master/Photo/weblearnpath4.png)
+# Hybrid app
+https://zhuanlan.zhihu.com/p/21387961
