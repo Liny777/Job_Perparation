@@ -93,6 +93,11 @@ webpack干啥的，
 
 连数据，二叉树  
 
-
-
-
+# 前端路线
+1、https://zhuanlan.zhihu.com/p/139064270
+2、https://github.com/qianguyihao/Web
+![Route of Web](https://github.com/Liny777/Job_Perparation/raw/master/Photo/Wechat.jpeg)
+![Route of Web](https://github.com/Liny777/Job_Perparation/raw/master/Photo/Node.png)
+![Route of Web](https://github.com/Liny777/Job_Perparation/raw/master/Photo/weblearnpath2.png)
+![Route of Web](https://github.com/Liny777/Job_Perparation/raw/master/Photo/weblearnpath3.png)
+![Route of Web](https://github.com/Liny777/Job_Perparation/raw/master/Photo/weblearnpath4.png)
