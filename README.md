@@ -50,7 +50,7 @@ filter
 #### bootstrap  
 
 #### 微信小程序  
-
+https://developers.weixin.qq.com/miniprogram/dev/framework/app-service/page-life-cycle.html  
 #### REACT  
 
 #### 算法  
@@ -103,4 +103,6 @@ webpack干啥的，
 ![Route of Web](https://github.com/Liny777/Job_Perparation/raw/master/Photo/weblearnpath4.png)
 # Hybrid app —— Flutter
 https://zhuanlan.zhihu.com/p/21387961
-
+# 代码随想录
+https://www.programmercarl.com
+https://github.com/youngyangyang04/leetcode-master
