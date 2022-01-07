@@ -21,3 +21,43 @@ function reverse(arr){
 
 var arr4 = [1,2,3]
 arr4.push(4)
+
+var arr5 = [1500,1200,2000,2100,1800]
+var newArr = []
+for(var i=0;i<arr5.length;i++){
+    if(arr5[i]<2000){
+        newArr.push(arr5[i])
+        // newArr[newArr.length] = arr5[i];
+    }
+}
+
+var arr6 = ['pink','red','blue']
+arr6.reverse();
+console.log(arr6)
+
+var arr7 = [3,4,5,7]
+arr7.sort() // sort 只能字典排序 只能排单数
+console.log(arr7)
+
+var arr8 = [13,4,77,1,7]
+arr8.sort(function(a,b){
+    return a-b;  // 升序的顺序排列
+    // return b-a; // 降序的顺序排列
+})
+
+// 数组去重重点案例
+// 有一个数组['c','c','c','c','c','c','a'],要求去除数组中重复的元素
+
+var arr9 = ['c','c','c','c','c','c','a']
+function unique(arr){
+    var newArr = []
+    for(var i=0;i<arr.length;i++){
+        if(newArr.indexOf(arr[i])=== -1){
+            newArr.push(arr[i])
+        }
+    }
+    return newArr;
+}
+var demo = unique(['c','c','c','c','c','c','a'])
+console.log(demo)
+
