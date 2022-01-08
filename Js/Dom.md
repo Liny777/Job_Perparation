@@ -71,3 +71,38 @@ type value checked selected disabled
 // 表单里面的值 文字内容是通过value来修改的
 // 如果想要某个表单被禁用 不能再点击 disabled  我们想要这个按钮 button禁用
  // this 指向的是事件函数的调用者
+
+ 4.4 样式属性操作
+ 我们可以通过JS修改元素的大小，颜色，位置等样式
+ 1、element.style 修改比较少    行内样式操作
+ 2、element.className 修改比较多    类名样式操作
+ 3、JS里面的样式采取驼峰命名法 比如 fontSize,backgroundColor
+ 4、JS修改style样式操作，产生是行内样式，所以js修改的css权重比较高
+
+.change{
+
+}
+ this.className = 'change'
+
+ 1、如果样式修改较多，可以采取操作类名方式更改元素样式
+ 2、class因为是个保留字，因此使用className来操作元素类名属性
+ 3、className 会直接更改元素类名，会覆盖原先的类名
+ 如果想保留原先的类名，我们可以这么做，多类名选择器
+ this.className = 'first change'
+
+操作元素
+1、操作元素内容
+1.1 innerText
+1.2 innerHTML 识别标签 推荐
+2、 操作常见元素属性 
+2.1 src\href\title\alt等
+3、操作表单元素属性
+3.1 type value disabled等
+4、操作元素样式属性
+4.1 element.style
+4.2 className 样式比较多
+
+4.5 排他思想
+1、所有元素全部清除样式
+2、当前元素设置样式
+3、注意顺序不能颠倒，首先干掉其他人，再设置自己
