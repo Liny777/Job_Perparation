@@ -36,3 +36,17 @@ for (var k in o){
    
 }
 console.log(max)
+console.log("最大值： "+maxValue)
+
+var str = 'andy'
+console.log(str.concat('red'))
+var str1 = '改革春风吹满地'
+console.log(str1.substr(2,2)) // 第一个2 是索引号 从第几个开始 第二个2 是取几个字符
+
+// 有一个字符串'abcoefoxyozzopp'替换里面所有 o 为 * 
+str1 = 'abcoefoxyozzopp'
+while(str1.indexOf('o')!==-1){
+    str1 = str1.replace('o','*')
+}
+console.log(str1)
+

@@ -123,6 +123,13 @@ cookie，session
 深拷贝
 防抖节流
 ES6新特性使用
+
+this:
+(1)全局作用域的this指向window
+(2)对象内部的this指向他本身
+(3)构造函数指向他的实例
+(4)apply()bind()call()指向函数的第一个参数
+(5)箭头函数没有自己的this,要向他的上层作用域找，找到全局就是 window
 #### node
 
 GC机制
