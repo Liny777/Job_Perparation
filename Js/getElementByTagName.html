@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>知否知否</li>
+        <li>知否知否</li>
+        <li>知否知否</li>
+        <li>知否知否</li>
+        <li>知否知否</li>
+    </ul>
+    <script>
+        // 返回的是 获取过来元素对象的集合 以 伪数组的形式存储的
+        var lis = document.getElementsByTagName('li')
+        console.log(lis)
+        console.log(lis[0])
+        // 2. 我们想要依次打印里面的元素对象我们可以采取遍历的方式
+        for(var i=0;i<lis.length;i++){
+            console.log(lis[i]);
+        }
+    </script>
+</body>
+</html>
