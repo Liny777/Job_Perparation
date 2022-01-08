@@ -29,7 +29,7 @@ getElementsByTagName()方法可以返回带有指定标签名的对象集合
 2.4 通过HTML5新增的方法获取 —— ie9以上才可使用
 document.getElementByClassName('类名'); // 根据类名返回元素对象集合
 
-2.5 document.querySelector('选择器') // 根据指定选择器返回第一个元素对象
+2.5 document.querySelector('选择器') // 根据指定选择器返回第一个元素对象  -------  只获取第一个元素
 3. querySelectorAll() 返回指定选择器的所有元素对象的集合
 但是要加符号，类加. ID加#
 
@@ -46,3 +46,28 @@ JS使我们有能力创建动态页面，而事件可以被JS侦测到的行为
 简单理解：触发--响应机制
 网页中的每个元素都可以产生某些可以触发JS的事件，例如我们可以在用户点击某按钮时产生一个事件，然后去执行一些操作
 
+3.3 执行事件的步骤
+1、获取事件源
+2、注册事件（绑定事件）
+3、添加事件处理程序（采取函数赋值形式)
+
+3.4 操作元素
+JS中的DOM操作可以改变网页内容，结构和样式，我们可以利用DOM操作元素来改变元素里面的内容，属性等，注意以下都是属性
+3.4.1 改变元素内容
+1. element.innerText() // 从起始位置到终止位置的内容，但它去除html标签，同时空格和换行也会去掉
+2. element.innerHTML() // 起始位置到终止位置的全部内容，包括html标签，同时保留空格和换行
+// innerText 和 innerHTML的区别
+// 1. innerText 不识别html标签 非标准   去除空格和换行
+// 2. innerHTML 识别html标签，W3C标准    保留空格和换行      ******  主要用这个 是标准 innerHTML
+
+4.2 常用元素的属性操作
+1. innerText、innerHTML 改变元素内容
+2. src href
+3. id、alt、title
+
+4.3 表单元素的属性操作
+利用DOM可以操作如下表单元素的属性
+type value checked selected disabled
+// 表单里面的值 文字内容是通过value来修改的
+// 如果想要某个表单被禁用 不能再点击 disabled  我们想要这个按钮 button禁用
+ // this 指向的是事件函数的调用者

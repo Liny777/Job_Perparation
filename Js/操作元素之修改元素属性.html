@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="liny">林佑光</button>
+    <button id="alice">贺亦欣</button>
+    <img src="../Photo/Arc.png" alt="">
+    <script>
+        // 修改元素属性 src
+        // 1. 获取元素
+        var liny = document.getElementById('liny')
+        var alice = document.getElementById('alice')
+        var img = document.querySelector('img')
+        // 2. 注册事件
+        alice.onclick = function(){
+            img.src = '../Photo/Node.png'
+            img.title = "贺亦欣思密达"
+        }
+        liny.onclick = function(){
+            img.src = "../Photo/Arc.png"
+            img.title = "林佑光"
+        }
+    </script>
+</body>
+</html>
