@@ -129,5 +129,144 @@ element.getAttribute(‘属性') 主要获取自定义的属性（标准） 我�
 3、移除属性
 element.removeAttribute('属性')
 
+H5自定义属性
+自定义属性的目的：是为了保存并使用数据。有些数据可以保存到页面中而不用保存到数据库中
+自定义属性获取通过getAttribute('属性')获取
+
+1、设置H5自定义属性 —— 规范
+
+H5规定自定义属性data-开头作为属性名并且赋值
+比如<div data-index="1"></div>
+
+或者使用JS设置
+element.setAttribute('data-index',2)
+
+// h5新增的获取自定义属性的方法 它只能获取data-开头的
+// dataset是一个集合里面存放了所有以data开头的自定义属性
+console.log(div.dataset)
+console.log(div.dataset.index)
+console.log(div.dataset['index'])
+
+如果是 data-list-name
+div.getAttribute('data-list-name')
+console.log(div.dataset.listName)  驼峰命名法
+
+
+5、节点操作
+5.1、为什么学节点操作
+获取元素通常使用两种方式
+1、利用DOM提供的方法获取元素
+document.getElementById()
+document.getElementByTagName()
+document.querySelector等
+逻辑性不强，繁琐
+2、利用节点层级关系获取元素
+利用父子兄弟关系获取元素
+逻辑性强，但是兼容性稍差
+
+这两种方法都可以获取元素
+5.2 节点概述
+网页中的所有内容都是节点（标签，属性，文本，注释等），在DOM中，节点使用node来表示
+所有HTML元素都可以被修改
+
+1、<li>我是li</li>
+li叫做元素节点
+我是li就是文字节点
+2、<ul>
+    <li>
+ul和li之间的换行也称为文本节点
+
+还有class称为属性节点
+
+3、一般地，节点至少拥有nodeType（节点类型）、nodeName（节点名称）和nodeValue（节点值）这个基本属性
+
+元素节点 nodeType 为1
+属性节点 nodeType 为2
+文本节点 nodeType 为3 （文本节点包含文字，空格，换行等）
+
+我们实际开发中，节点操作主要操作的是元素节点
+
+5.3、节点层级
+利用Dom树可以把节点划分为不同的层级关系，常见的是父子熊层级关系。
+1、父级节点
+eg: erweima.parentNode  // 得到的是离元素最近的父级节点
+如果找不到父节点就返回null
+
+2、子节点
+2.1 parentNode.childNodes (标准)
+子节点 childNodes所有的子节点 包含 元素节点 文本节点等
+通过nodeType
+如果只想获得里面的元素节点，则需要专门处理，所以我们一般不提倡使用childNodes
+var ul = document.querySelector('ul')
+for (var i=0;i < ul.childNodes.length;i++) {
+    if(ul.childNodes[i].nodeType == 1){
+        // ul.childNodes[i] 是元素节点
+        console.log(ul.childNodes[i])
+    }
+}
+2.2 子节点 parentNode.children(非标准)
+parentNode.children是一个只读属性，返回所有的子元素节点，它只返回子元素节点，其余节点不返回（这个是我们重点掌握的）
+虽然children是一个非标准，但是得到了各个游览器的支持，因此我们可以放心使用
+
+2.3 获取第一个子节点和最后一个子节点
+2.3.1 parentNode.firstChild
+firstChild返回第一个子节点，找不到则返回null。同样，也是包含所有的节点
+firstChild第一个子节点，不管是文本节点还是元素节点
+2.3.2 parentNode.lastChild
+
+以下两个方法有兼容性问题 IE9以上才支持
+2.3.3 firstElementChild返回第一个子元素节点
+2.3.4 lastElementChild返回第一个子元素节点
+
+实际开发中，firstChild和lastChild包含其他节点，操作不方便，而firstElementChild和lastElementChild又有兼容性问题，那么我们如何
+获取第一个子元素节点或者最后一个子元素节点呢？
+解决方法：
+3、实际开发中，既没有兼容性问题，又返回第一个子元素
+ol.children[0]
+ol.children[ol.children.length-1]
+
+5.3 兄弟节点
+5.3.1 nextSibling返回当前元素的下一个兄弟节点，找不到则返回null。同样，也是包含所有的节点。
+包含元素节点，文本节点 等等
+5.3.2 previousSibling 
+返回上一个兄弟节点
+
+以下方法一样有兼容问题
+5.3.3 nextElementSibling
+返回当前元素下一个兄弟元素节点，找不到则返回null
+5.3.4 previousElementSibling
+返回前一个元素兄弟元素节点，找不到则返回null
+
+function getNextElementSibling(element){
+    var el = element;
+    while(el = el.nextSibling) {
+        if (el.nodeType === 1){
+            return el;
+        }
+    }
+    return null;
+}
+
+5.4 创建节点
+document.createElement('tagName')
+document.createElement()方法创建由tagName指定的HTML元素。因为这些元素原先不存在，是根据我们的需求动态生成的，所以我们也称为动态创建元素节点。
+
+5.4 添加节点
+5.4.1 后面插入
+node.appendChild(child)
+node.appendChild()方法将一个节点添加到指定父节点的子节点列表末尾。类似于css里面的after元素。
+node 父级 child 子级 后面追加元素 类似于数组中的push
+5.4.2 前面插入
+node.insertBefore(child,指定元素)
+node.insertBefore()方法将一个节点添加到父节点的指定子节点前面，类似于css里面的before伪元素。
+5.4.3 我们想要页面添加一个新的元素：1、创建元素 2、添加元素
+Eg:
+// 创建
+var li = document.createElement('li');
+// 添加
+var ul =  document.querySelector('ul')
+ul.appendChild(li)
+var lili = document.createElement('li');
+ul.insertBefore(lili,ul.children[0])
 
 
