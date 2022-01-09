@@ -269,4 +269,32 @@ ul.appendChild(li)
 var lili = document.createElement('li');
 ul.insertBefore(lili,ul.children[0])
 
+删除节点
+node.removeChild(child)
+方法从DOM中删除一个子节点，返回删除的节点。
+点击按钮，删除一个元素
+btn.onclick = function(){
+    if(ul.children.length == 0){
+        this.disabled = true
+    }
+    ul.removeChild(ul.children[0])
+}
+
+5.6 复制节点——克隆节点
+node.cloneNode()
+方法返回调用该方法的节点的一个副本。也称为克隆节点/拷贝节点
+注意：
+1、如果括号参数为空或者为false，则是浅拷贝，即只克隆复制节点本身，不克隆里面的子节点，不复置里面的内容。
+true深拷贝，复制内容也复制标签
+
+5.8 三种动态创建元素区别
+5.8.1
+document.write()
+5.8.2
+element.innerHTML
+5.8.3
+document.createElement()
+
+Eg:
+document.write('<div>123</div>)
 

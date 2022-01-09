@@ -268,3 +268,4 @@ Puzzle有些太复杂，不过可以当作一个小型的JS知识的考验
 贵公司自研的项目主要用到哪些框架
 # 使用黑马后台电商管理系统学习
 # 看ES6 和 JS高级
+# javascript:; 阻止链接跳转，<a href='javascript:;'></a>或者<a href='javascript:void(0)'></a> 如果是#，则url上会多一个#
