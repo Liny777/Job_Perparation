@@ -67,10 +67,18 @@
         // 2. 下面复选框需要全部选中，上面全选才能选中做法：给下面所有复选框绑定点击事件，每次点击，都
         for(var i=0;i<j_tbs.length;i++){
             j_tbs[i].onclick = function(){
+                // flag 控制全选按钮是否选中
+                var flag = true
                 // 包含在另一个function里，所有上面的i和下面的i是不同的作用域，因此不影响
+                // 每次点击下面的复选框都要循环检查这4个小按钮是否全选中
                 for(var i=0;i<j_tbs.length;i++){
-
+                    if(!j_tbs[i].checked ){
+                        flag = false
+                        break // 退出for循环，这样可以提高执行效率，因为只要有一个没有选中，剩下的就无需循环判断了
+                        // j_cbAll.checked = false
+                    }
                 }
+                j_cbAll.checked = flag
             }
         }
     </script>

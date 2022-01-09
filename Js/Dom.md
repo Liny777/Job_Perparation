@@ -106,3 +106,28 @@ type value checked selected disabled
 1、所有元素全部清除样式
 2、当前元素设置样式
 3、注意顺序不能颠倒，首先干掉其他人，再设置自己
+
+获取元素的属性值
+方法一
+var div = document.querySelector('div')
+console.log(div.id)
+element.属性
+方法二
+element.getAttribute('属性')
+
+自定义属性 属性可以自己添加
+比如 <div id ="demo" index="1"></div>
+index属性就是自定义的属性
+两种方法区别
+element.属性 ： 获取内置属性值（元素本身自带的属性）
+element.getAttribute(‘属性') 主要获取自定义的属性（标准） 我们程序员自定义的属性
+
+2、设置元素属性值 
+（1）element.属性 = 值
+（2）element.setAttribute('属性','值') 
+
+3、移除属性
+element.removeAttribute('属性')
+
+
+
