@@ -294,7 +294,28 @@ document.write()
 element.innerHTML
 5.8.3
 document.createElement()
-
+区别：
+1、document.write是直接将内容写入页面的内容流，但是文档流执行完毕，则它会导致页面全部重绘
+补充：window.onload = function(){} 页面加载完了才去写标签，效果同上面的document.write因为文档流执行完毕了，导致页面全部重绘了。
+5.8.2 和 5.8.3 都不会出现这种情况。
 Eg:
 document.write('<div>123</div>)
+
+2、innerHTML是将内容写入某个DOM节点，不会导致页面全部重绘
+
+3、innerHTML创建多个元素效率更高（不要拼接字符串，采取数组形式拼接），结构稍微复杂
+function fn(){
+    var d1 = +new Date();
+    var array = []
+    for(var i=0; i<10000; i++){
+        array.push('<div style="width:100px;height:2px;border:1px solid blue;"></div>')
+    }
+    document.body.innerHTML = array.join('');
+    var d2 = +new Date();
+    console.log(d2 - d1)
+}
+fn()
+4、createElement()创建多个元素效率稍低一点点，但是结构更清晰
+
+
 
