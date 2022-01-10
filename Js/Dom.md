@@ -317,5 +317,65 @@ function fn(){
 fn()
 4、createElement()创建多个元素效率稍低一点点，但是结构更清晰
 
+Dom总结
+DOM重点核心
+文档对象模型(Document Object Model)
 
-
+DOM 文档对象模型 （Document Object Model) 是W3C组织推荐的处理可扩展标记语言 （HTML或者XML）的标准编程接口。
+通过这些DOM接口，可以改变网页的内容，结构和样式。
+1、对于JS，为了能够使JS操作HTML，JS就有了一套自己的DOM编程接口。
+2、对于HTML，dom使得html形成一棵dom树，包括文档，元素，节点。
+- 文档：一个页面就是一个文档，DOM中使用Document表示
+- 元素：页面中的所有标签都是元素，DOM中使用element表示
+- 节点：网页中的所有内容都是节点（标签，属性，文本，注释等），DOM中使用node表示 
+我们获取过来的DOM元素是一个对象（Object），所以称为文档对象模型。
+关于dom操作，我们主要针对于元素的操作。主要有创建，增，删，改，查、属性操作、事件操作。
+创建
+1、document.write（直接将内容写入页面的内容流，但是文档流执行完毕，则它会导致页面全部重绘，同document.write）
+2、innerHTML （将内容写入某个DOM节点，不会导致页面全部重绘，创建多个元素效率更高（不要拼接字符串，采取数组形式[document.body.innerHTML = array.join('');]拼接），结构稍微复杂）
+3、createElement （创建多个元素效率稍低一点点，但是结构更清晰）
+增
+1、appendChild （末尾追加）
+2、insertBefore （前面追加）
+删
+1、removeChild
+改 —— 主要修改dom的元素属性，dom元素的内容，属性，表单的值等
+1、修改元素属性：src，href，title等
+2、修改普通元素内容：innerHTML（识别html标签，W3C标准，保留空格和换行。推荐），innerText（不识别html标签，非标准，去除空格和换行）
+3、修改表单元素：value，type，disabled等
+4、修改元素样式：style（修改比较少的时候使用，行内样式操作，所以优先级高，样式采取驼峰命名法 比如 fontSize,backgroundColor），className（修改比较多的时候使用，类名样式操作，会直接更改元素类名，会覆盖原先的类名，如果想保留原先的类名，我们可以这么做，多类名选择器）
+查 —— 主要获取查询dom的元素
+1、DOM提供的API方法：getElementById，getElementsByTagName(大小写敏感,若在当前Document下没有找到，则返回null,古老用法不推荐)
+2、H5提供的新方法：querySelector(只获取第一个元素，类.,id是#)，querySelectorAll （提倡）
+3、利用节点操作获取元素：父（parentNode）、子（children）、兄（previousElementSibling、nextElementSibling）提倡
+4、获取特殊对象：document.body(返回body元素对象) document.documentElement(返回html元素对象)
+5、parentNode.childNodes (标准 子节点 childNodes所有的子节点 包含 元素节点 文本节点等）
+6、parentNode.children是一个只读属性，返回所有的子元素节点，它只返回子元素节点，其余节点不返回（这个是我们重点掌握的）虽然children是一个非标准，但是得到了各个游览器的支持，因此我们可以放心使用
+7、parentNode.firstChild和parentNode.lastChild
+firstChild返回第一个子节点，找不到则返回null。同样，也是包含所有的节点
+firstChild第一个子节点，不管是文本节点还是元素节点
+8、firstElementChild（返回第一个子元素节点，但是有兼容性问题 IE9以上才支持）lastElementChild返回第一个子元素节点
+9实际开发中，firstChild和lastChild包含其他节点，操作不方便，而firstElementChild和lastElementChild又有兼容性问题，那么我们如何
+获取第一个子元素节点或者最后一个子元素节点呢？解决方法：实际开发中，既没有兼容性问题，又返回第一个子元素ol.children[0]和ol.children[ol.children.length-1]
+属性操作 —— 主要针对自定义属性
+1、setAttribute：设置dom的属性值
+2、getAttribute：得到dom的属性值
+3、removeAttribute：移除属性
+4、常规取非自定义属性：element.属性 = 值
+// h5新增的获取自定义属性的方法 它只能获取data-开头的
+// dataset是一个集合里面存放了所有以data开头的自定义属性
+console.log(div.dataset)
+console.log(div.dataset.index)
+console.log(div.dataset['index'])
+如果是 data-list-name
+div.getAttribute('data-list-name')
+console.log(div.dataset.listName)  驼峰命名法
+事件操作 —— 给元素注册事件，采取事件源.事件类型 = 事件处理程序
+onclick 鼠标点击左键触发
+onmouseover 鼠标经过触发
+onmouseout 鼠标离开触发
+onfocus 获得鼠标焦点触发
+onblur 失去鼠标焦点触发
+onmousemove 鼠标移动触发
+onmouseup 鼠标弹起触发
+onmousedown 鼠标按下触发
