@@ -15,18 +15,20 @@
         // JS代码中执行捕获或者冒泡其中的一个阶段
         // onclicj和attachEvent（ie）只能得到冒泡阶段
         // 捕获阶段 如果addEventListener第三个参数时true那么则处于捕获阶段 document -> html -> body -> father -> son
-        var son = document.querySelector('.son')
-        son.addEventListener('click',function(){
-            alert('son')
-        },true)
-        var father = document.querySelector('.son')
-        father.addEventListener('click',function(){
-            alert('father')
-        },true)
+        // var son = document.querySelector('.son')
+        // son.addEventListener('click',function(){
+        //     alert('son')
+        // },true)
+        // var father = document.querySelector('.son')
+        // father.addEventListener('click',function(){
+        //     alert('father')
+        // },true)
         // 冒泡阶段 如果addEventListener 第三个参数时false或者省略，那么则处于冒泡阶段 son -> father -> body -> html -> document
         var son = document.querySelector('.son')
-        son.addEventListener('click',function(){
+        son.addEventListener('click',function(e){
             alert('son')
+            e.stopPropagation(); // stop停止
+            e.cancelBubble = true // 非标准 cancel 取消  bubble冒泡
         },false)
         var father = document.querySelector('.son')
         father.addEventListener('click',function(){

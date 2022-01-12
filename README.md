@@ -270,3 +270,4 @@ Puzzle有些太复杂，不过可以当作一个小型的JS知识的考验
 # 看ES6 和 JS高级
 # javascript:; 阻止链接跳转，<a href='javascript:;'></a>或者<a href='javascript:void(0)'></a> 如果是#，则url上会多一个#
 # 面经：https://www.nowcoder.com/discuss/experience?tagId=644
+# 用GitHub Pages设置静态页面https://zhuanlan.zhihu.com/p/38480155
