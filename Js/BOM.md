@@ -93,3 +93,68 @@ setInterval(方法重复调用一个函数，每隔这个时间，就去调用�
 3、间隔的毫秒数省略默认是0，如果写，必须是毫秒，表示每隔多少毫秒就自动调用这个函数
 4、给他一个标识符
 
+4.JS执行队列
+# 4.3同步和异步
+## 同步任务
+同步任务都在主线程上执行，形成一个执行栈
+## 异步任务
+JS的异步是通过回调函数实现的。
+一般而言，异步任务有以下三种类型：
+1、普通事件，如click，resize等
+2、资源加载，如load，error等
+3、定时器：包括setInterval，setTimeout等
+异步任务相关回调函数添加到任务队列中（任务队列也称为消息队列）
+
+# 4.4 JS执行机制
+1、先执行执行栈中的同步任务
+2、异步任务（回调函数）放入任务队列中。
+3、一旦执行栈中所有同步任务执行完毕，系统就会按次序读取任务队列中的异步任务，于是被读取的异步任务结束等待状态，进入执行栈，开始执行。
+
+
+4.1 例子
+//// 123
+console.log(1)
+setTimeout(function(){
+    console.log(3)
+},0)
+console.log(2)
+
+4.4 JS执行机制
+由于主线程不断的重复获得任务、执行任务、再获取任务、再执行，所以这种机制被称为事件循环（event loop)
+
+JS会开始执行执行栈（JS主线程）-》当有异步任务时，提交给对应的异步进程处理 
+比如web API（异步API）1.ajax 2.DOM事件（DOM模块）3. setTimeout，setInterval（timer模块）
+异步任务完毕，推入任务队列中
+
+5 location 对象
+5.1 location对象
+window对象给我们提供了一个location属性，用于获取或设置窗体的URL，并且可以用于解析URL。
+因为这个属性返回的是一个对象，所以我们这个属性也称为location对象。
+5.2 URL
+统一资源定位符（Uniform Resource Locator URL）是互联网上标准资源的地址。互联网上的每个文件都有一个唯一的URL，它包含的信息指出文件的位置以及浏览器应该怎么处理它。
+
+protocol://host[:port]/path/[?query]#fragment
+组成 说明
+protocol 通信协议 常用http ftp maito(邮件)等
+host 主机（域名）
+port 端口号 省略时使用方案的默认端口 如http的默认端口为80
+path 路由 由零或多个'/'符合隔开的字符串，一般用来表示主机上的一个目录或文件地址
+query 参数 以键值对的形式通过&符号分隔开来
+fragment 片段 #后面内容 常见于链接锚点
+
+5.3 location对象的属性
+location对象属性 返回值
+location.href   获取或者设置整个URL
+location.host   返回主机（域名）
+location.port   返回端口，如果未写返回 空字符串
+location.pathname 返回路径
+location.search   返回参数
+location.hash     返回片段 #后面内容 常见于链接锚点
+重点记住 href 和 search
+
+location对象的方法
+location.assign() 跟href一样，可以跳转页面（也称为重定向页面）  记录历史 可以实现后退功能
+location.replace() 替换当前页面，因为不记录历史，所以不能后退页面
+location.reload() 重新加载页面，相当于刷新按钮或者f5如果参数为true强制刷新ctrl+F5
+
+navigator对象
