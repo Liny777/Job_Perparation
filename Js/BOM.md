@@ -48,3 +48,24 @@ DOMContentLoaded事件触发时，仅当DOM加载完成，不包括样式表，�
 ie9以上才支持
 如果页面的图片很多的话，从用户访问到onload触发可能需要较长时间，交互效果就不能实现，必然影响用户的体验，此时用DOMContentLoaded事件比较合适。
 
+load页等页面全部加载完成，包含页面dom元素，图片，flash，css等
+DOMContentLoaded 是DOM加载完毕，不包含图片，flash，css等就可以
+
+2.2 调整窗口大小事件
+window.onresize = function(){}
+window.addEventListener("resize",function(){})
+window.onresize是调整窗口大小加载事件，当触发时就调用的处理函数。
+注意：
+1、只要窗口大小发生像素变化，就会触发这个事件,当触发时就调用处理函数
+注意：
+1、只要窗口大小发生像素变化，就会触发这个事件。
+2、我们经常利用这个事件完成响应式布局。window.innerWidth当前屏幕的宽度
+
+3定时器
+3.1 两种定时器
+window对象给我们提供2个非常好用的方法-定时器
+- setTimeout()
+- setInterval()
+3.2 setTimeout()定时器
+window.setTimeout(调用函数，[延迟的毫秒数])
+setTimeout()方法用于设置一个定时器，该定时器在定时器到期后执行函数
