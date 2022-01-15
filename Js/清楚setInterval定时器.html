@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button class="begin">开启定时器</button>
+    <button class="stop">停止定时器</button>
+    <script>
+        var begin = document.querySelector('.begin')
+        var stop1 = document.querySelector('.stop')
+        var timer = null; // 全局变量 null是一个空对象
+        // 这样点击两次会产生两个定时器，可以在点击begin后移除点击事件，点击了stop之后再添加事件监听
+        begin.addEventListener('click',function(){
+            timer = setInterval(function(){
+                console.log('ni hao ma');
+        },1000)
+            })
+
+        stop1.addEventListener('click',function(){
+            clearInterval(timer)
+        })
+    </script>
+</body>
+</html>

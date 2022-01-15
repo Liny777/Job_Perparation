@@ -69,3 +69,27 @@ window对象给我们提供2个非常好用的方法-定时器
 3.2 setTimeout()定时器
 window.setTimeout(调用函数，[延迟的毫秒数])
 setTimeout()方法用于设置一个定时器，该定时器在定时器到期后执行函数
+
+3,2 setTimeout()定时器
+window.setTimeout(调用函数，[延迟的毫秒数])
+setTimeout() 这个调用函数我们也称为回调函数callback
+普通函数是按照代码顺序直接调用
+而这个函数，需要等待时间，时间到了才去调用这个函数，因此称为回调函数
+以前讲 element.onclick = function(){} 或者 element.addEventListener("clcik",fn)里面函数也是回调
+
+3.3 停止定时器setTimeout()
+window.clearTimeout(timeoutID)
+clearTimeout()方法取消了先前通过调用setTimeout()建立的定时器
+注意
+1. window可以省略
+2. 里面的参数就是定时器的标识符
+
+3.4 setInterval() 定时器
+window.setInterval(回调函数,[间隔的毫秒数])
+setInterval(方法重复调用一个函数，每隔这个时间，就去调用一次回调函数。)
+注意：
+1、window可以省略
+2、这个调用函数可以直接写函数，或者写函数名，或者采取字符串‘函数名’三种形式
+3、间隔的毫秒数省略默认是0，如果写，必须是毫秒，表示每隔多少毫秒就自动调用这个函数
+4、给他一个标识符
+
