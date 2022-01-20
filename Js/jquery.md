@@ -55,4 +55,27 @@ ID选择器： $("#id")  获取指定ID元素
 并集选择器 $(div,p,li")     选取多个元素
 交集选择器 $(li.current")      交集元素
 1.2 层级选择器
-子代选择器
+子代选择器  $("ul>li") 使用>号，获取亲儿子层级的元素；注意，并不会获取孙子层级的元素 
+后代选择器  $("ul li") 使用空格，代表后代选择器，获取ul的所有li元素，包括孙子
+
+1.3 隐式迭代
+遍历内部DOM元素（伪数组形式存储）的过程叫做隐式迭代
+简单理解：给匹配到的所有元素进行循环遍历，执行相应的方法，而不用我们再进行循环，简化我们的操作，方便我们的调用
+3、隐式迭代就是把匹配的所有元素内部进行遍历循环，给每一个元素添加css这个方法
+
+1.4 jQuery筛选选择器
+:first  $('li:first')   获取第一个li元素
+:last   $('li:last')    获取最后一个li元素
+:eq(index)  $('li:eq(2)')   获取到的li元素中，选择索引号为2的元素，索引号index从0开始
+:odd    $("li:odd") 获取到的li元素中，选择引号为奇数的元素
+:even   $("li:even")    获取到的li元素中，选择索引号为偶数的元素
+
+1.5 jQuery筛选方法
+*parent()    $("li").parent()    查找父级
+*children(selector)  $("ul").children("li")  相当于$("ul>li")最近一级（亲儿子）
+*find(selector)  $("ul").find("li")  相当于$（“ul li")后代选择器
+*siblings(selector)  $(".first").siblings("li")  查找兄弟节点，不包括自己本身
+nextAll([expr]) $(.first).nextAll()     查找当前元素之后所有的同辈元素
+prevtAll([expr])    $(".last").prevAll()    查找当前元素之前所有的同辈元素
+hasClass(class)     $('div').hasClass("protected")  检查当前的元素是否含有某个特定的类，如果有，则返回true
+*eq(index)   $("li").eq(2);  相当于$("li:eq(2)"),index从0开始
