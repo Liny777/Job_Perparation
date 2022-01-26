@@ -150,32 +150,201 @@
 // };
 // console.log(minSubArrayLen(7,[2,3,1,2,4,3]))
 
-/**
- * @param {number[]} fruits
- * @return {number}
- */
- var totalFruit = function(fruits) {
-    let blanket = [],result=0;
-    for(let i=0;i<fruits.length;i++){
-        blanket.length = 0
-        for(let j=i;j<fruits.length;j++){
-            if(blanket.length<2){
-                blanket.push(fruits[j])
-            }else{
-                console.log("blanket.indexOf(fruits[j]): "+blanket.indexOf(fruits[j]));
-                if(blanket.indexOf(fruits[j])!==-1){
-                    blanket.push(fruits[j])
-                }else{
-                    console.log("result: "+result);
-                    console.log("blanket.length: "+blanket.length);
-                    result = Math.max(result,blanket.length)
-                    break
-                }
-            }
-           
+//[1,1,2,2]
+//[1,1,2,2,3] -> [2,2,3]
+// var totalFruit = function(fruits) {
+//     let l = 0;//起始指针
+//     let maxLen = 0;//窗口的最大长度 其中最多包涵两种水果
+//     let n = 0//前一类水果的结束位置
+//     let arr = [fruits[l]]//水果的种类数组
 
+//     for(let r = 0; r < fruits.length; r++){//窗口的右指针不断前进
+//         console.log(arr);
+//         if(!arr.includes(fruits[r])){//如果窗口中不包含 进窗口的水果
+//             console.log(fruits[r]);
+//             if(arr.length <= 1){//如果只有一种水果
+//                 arr[1] = fruits[r]//将这种水果加入arr数组
+//             }else{//如果有两种水果
+//                 l = n//更新窗口的左边界
+//                 arr[0] = fruits[r-1]//更新arr中水果的种类
+//                 arr[1] = fruits[r]
+//             }
+//         }
+       
+//         if(fruits[r] !== fruits[n]){//如果进来了一种新的类型的水果 更新前一种水果的位置
+//             n = r
+//         }
+
+//         maxLen = Math.max(maxLen,r-l+1)//更新滑动窗口的最大值
+//         console.log("----------");
+//     }
+//     return maxLen
+
+// };
+
+// /**
+//  * @param {number[]} fruits
+//  * @return {number}
+//  */
+//  var totalFruit1 = function(fruits) {
+//      // arr只是用来存水果类型，不是用来存所有水果的
+//     let leftIndex=0,arr = [fruits[0]],currentType=0,result=0
+//     for(let rightIndex=0;rightIndex<fruits.length;rightIndex++){
+//         console.log(arr);
+//         if(!arr.includes(fruits[rightIndex])){ // 不相等 代表是一种新的水果
+//             console.log(fruits[rightIndex]);
+//             if(arr.length<=1){ // 可以改成===1? 如果只有一种水果
+//                 arr[1] = fruits[rightIndex]
+//             }else{ // 已经有两种水果
+//                 // currentType = rightIndex
+//                 leftIndex = currentType
+//                 arr[0] = fruits[rightIndex-1]
+//                 arr[1] = fruits[rightIndex]
+//             }
+//         }
+//         if(fruits[rightIndex]!==fruits[currentType]){
+//             currentType = rightIndex // 这个要记录的是最晚出现的第一个类别的当前位置，比如 1，1，2，1，1，2 那么current是指向第三个1，而不是第一个1
+//         }
+//         result = Math.max(result,rightIndex-leftIndex+1)
+//         console.log("----------");
+//     }
+//     return result
+// };
+// console.log(totalFruit([0,1,2,2]));
+// console.log(totalFruit([1,1,2,1]));
+// console.log(totalFruit([1,1,2,2]));
+// console.log(totalFruit([3,3,3,1,2,1,1,2,3,3,4]));
+// console.log("***********");
+// console.log(totalFruit1([0,1,2,2]));
+// console.log(totalFruit1([1,1,2,1]));
+// console.log(totalFruit1([1,1,2,2]));
+// console.log(totalFruit1([3,3,3,1,2,1,1,2,3,3,4]));
+
+// t = '111'
+// let need = {};
+//   // 窗口中的字符
+//   let window = {};
+//   for (let a of t) {
+//     // 统计需要的字符
+//     console.log(need[a]);
+//     console.log(need[a] || 0);
+//     need[a] = (need[a] || 0) + 1;
+//   }
+//   console.log(need);
+
+// /**
+//  * @param {string} s
+//  * @param {string} t
+//  * @return {string}
+//  */
+//  var minWindow = function(s, t) {
+//     // 需要的
+//     let need = {};
+//     // 窗口中的字符
+//     let window = {};
+//     for (let a of t) {
+//       // 统计需要的字符
+//       need[a] = (need[a] || 0) + 1;
+//     }
+//     // 左右指针
+//     let left = 0,
+//       right = 0;
+//     let valid = 0;
+//     // 最小覆盖子串的起始索引及长度
+//     let start = 0,
+//       len = Number.MAX_VALUE;
+//     while (right < s.length) {
+//       // 即将移入窗口的字符
+//       let c = s[right];
+//       // 右移窗口
+//       right++;
+//       if (need[c]) {
+//         // 当前字符在需要的字符中，则更新当前窗口统计
+//         window[c] = (window[c] || 0) + 1;
+//         if (window[c] == need[c]) {
+//           // 当前窗口和需要的字符匹配时，验证数量增加1
+//           valid++;
+//         }
+//       }
+//       // 当验证数量与需要的字符个数一致时，就应该收缩窗口了
+//       while (valid == Object.keys(need).length) {
+//         // 更新最小覆盖子串
+//         if (right - left < len) {
+//           start = left;
+//           len = right - left;
+//         }
+//         //即将移出窗口的字符
+//         let d = s[left];
+//         // 左移窗口
+//         left++;
+//         if (need[d]) {
+//           if (window[d] == need[d]) {
+//             valid--;
+//           }
+//           window[d]--;
+//         }
+//       }
+//     }
+//     return len == Number.MAX_VALUE ? "" : s.substr(start, len);
+//   };
+
+// // t = '111'w
+// // let need = {};
+// // for (let a of t) need[a] = (need[a] || 0) + 1
+// // console.log(need);
+// let left=right=valid=0
+// console.log(left);
+// console.log(right);
+// console.log(valid);
+// let b=a=c=0
+// a=  1>0?c=4:4
+
+/**
+ * @param {string} s
+ * @param {string} t
+ * @return {string}
+ */
+ var minWindow = function(s, t) {
+    let need={},window={}
+    for (let a of t) need[a] = (need[a] || 0) + 1
+    console.log(need);
+    let left=right=valid=start=0,len=+Infinity
+    while(right<s.length){
+        c = s[right++]
+        if(need[c]){ // 当前字符在需要的字符中，则更新当前窗口统计
+            window[c] = (window[c] || 0) + 1
+            console.log(window);
+            if(window[c] === need[c]){ // 同时比较了数量和键值
+                console.log("valid1: "+valid);
+                valid++ // 当前窗口和需要的字符匹配时，验证数量增加1
+                console.log("valid2: "+valid);
+            }
         }
+         // 当验证数量与需要的字符个数一致时，就应该收缩窗口了
+         console.log(Object.keys(need).length);
+         while(valid === Object.keys(need).length){
+              // 更新最小覆盖子串
+              console.log(window);
+              console.log("valid3: "+valid);
+              if((right-left)<len){
+                  start = left
+                  len = right-left
+              }
+              d = s[left]
+              left++
+              if(need[d]){
+                 if(window[d]===need[d]){
+                     valid--
+                 }
+                 window[d]--
+              }
+              console.log("valid4: "+valid);
+              console.log(window);
+         }
+         console.log("--------------------------------------");
+
     }
-    return result
+    return len == +Infinity ? "" : s.substr(start, len);
+
 };
-console.log(totalFruit([1,2,1]));
+minWindow("aaa","aa")
