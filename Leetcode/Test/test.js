@@ -299,52 +299,138 @@
 // let b=a=c=0
 // a=  1>0?c=4:4
 
-/**
- * @param {string} s
- * @param {string} t
- * @return {string}
- */
- var minWindow = function(s, t) {
-    let need={},window={}
-    for (let a of t) need[a] = (need[a] || 0) + 1
-    console.log(need);
-    let left=right=valid=start=0,len=+Infinity
-    while(right<s.length){
-        c = s[right++]
-        if(need[c]){ // 当前字符在需要的字符中，则更新当前窗口统计
-            window[c] = (window[c] || 0) + 1
-            console.log(window);
-            if(window[c] === need[c]){ // 同时比较了数量和键值
-                console.log("valid1: "+valid);
-                valid++ // 当前窗口和需要的字符匹配时，验证数量增加1
-                console.log("valid2: "+valid);
+// /**
+//  * @param {string} s
+//  * @param {string} t
+//  * @return {string}
+//  */
+//  var minWindow = function(s, t) {
+//     let need={},window={}
+//     for (let a of t) need[a] = (need[a] || 0) + 1
+//     console.log(need);
+//     let left=right=valid=start=0,len=+Infinity
+//     while(right<s.length){
+//         c = s[right++]
+//         if(need[c]){ // 当前字符在需要的字符中，则更新当前窗口统计
+//             window[c] = (window[c] || 0) + 1
+//             console.log(window);
+//             if(window[c] === need[c]){ // 同时比较了数量和键值
+//                 console.log("valid1: "+valid);
+//                 valid++ // 当前窗口和需要的字符匹配时，验证数量增加1
+//                 console.log("valid2: "+valid);
+//             }
+//         }
+//          // 当验证数量与需要的字符个数一致时，就应该收缩窗口了
+//          console.log(Object.keys(need).length);
+//          while(valid === Object.keys(need).length){
+//               // 更新最小覆盖子串
+//               console.log(window);
+//               console.log("valid3: "+valid);
+//               if((right-left)<len){
+//                   start = left
+//                   len = right-left
+//               }
+//               d = s[left]
+//               left++
+//               if(need[d]){
+//                  if(window[d]===need[d]){
+//                      valid--
+//                  }
+//                  window[d]--
+//               }
+//               console.log("valid4: "+valid);
+//               console.log(window);
+//          }
+//          console.log("--------------------------------------");
+
+//     }
+//     return len == +Infinity ? "" : s.substr(start, len);
+
+// };
+// minWindow("aaa","aa")
+
+// const matrix = new Array(3).fill(0).map(() => new Array(3).fill(0));
+// console.log(matrix);
+
+// var generateMatrix = function(n) {
+//     let l=t=0,r=b=n-1
+//     const matrix = new Array(n).fill(0).map(()=>new Array(n).fill(0))
+//     let num=1,tar=n*n
+//     console.log(tar);
+//     while(num<=tar){
+//         for(let i=l;i<=r;i++) {
+//             matrix[t][i] = num++ 
+//             console.log("num1: "+num);
+//         }
+//         t++
+//         for(let i=t;i<=b;i++) {
+//             matrix[i][r] = num++
+//             console.log("num2: "+num);
+//         }
+//         r--
+//         for(let i=r;i>=l;i++) {
+//             matrix[b][i] = num++
+//             console.log("num3: "+num);
+//         }
+//         b--
+//         for(let i=b;i>=t;i++){
+//             matrix[i][l] = num++
+//             console.log("num4: "+num);
+//         } 
+//         l++
+//     }
+//     return matrix
+// };
+// generateMatrix(3)
+
+var spiralOrder = function(matrix) {
+    let n = matrix.length
+    console.log("matrix.length"+matrix.length);
+    console.log("matrix[0].length: "+matrix[0].length);
+    let m = matrix[0].length
+    let l=t=0,r=m-1,b=n-1
+    // let mat = new Array(n).fill(0).map(()=>new Array(m).fill(0))
+    let mat= new Array(n*m).fill(0)
+    let num=1,tar=n*m
+    while(num<=tar){
+        console.log("------------------");
+        console.log("tar:"+tar);
+        for(let i=l;i<=r;i++) {
+            mat[num-1] = matrix[t][i]
+            num++
+            console.log("1: "+mat);
+        }
+        t++
+        for(let i=t;i<=b;i++) {
+            // console.log("i: "+i);
+            // console.log("r: "+r);
+            // console.log("matrix[i][r]: "+matrix[2][3]);
+            mat[num-1] = matrix[i][r]
+            num++
+            console.log("2: "+mat);
+        }
+        r--
+        if(mat[n*m-1]===0){
+            for(let i=r;i>=l;i--) {
+                mat[num-1] = matrix[b][i]
+                num++
+                console.log("3: "+mat);
             }
         }
-         // 当验证数量与需要的字符个数一致时，就应该收缩窗口了
-         console.log(Object.keys(need).length);
-         while(valid === Object.keys(need).length){
-              // 更新最小覆盖子串
-              console.log(window);
-              console.log("valid3: "+valid);
-              if((right-left)<len){
-                  start = left
-                  len = right-left
-              }
-              d = s[left]
-              left++
-              if(need[d]){
-                 if(window[d]===need[d]){
-                     valid--
-                 }
-                 window[d]--
-              }
-              console.log("valid4: "+valid);
-              console.log(window);
-         }
-         console.log("--------------------------------------");
+        
 
+        b--
+        if(mat[n*m-1]===0){
+        for(let i=b;i>=t;i--) {
+            mat[num-1] = matrix[i][l]
+            num++
+            console.log("4: "+mat);
+        }
     }
-    return len == +Infinity ? "" : s.substr(start, len);
-
+        
+        l++
+        
+    }
+    return mat
 };
-minWindow("aaa","aa")
+console.log(spiralOrder([[1,2,3,4],[5,6,7,8],[9,10,11,12]]))
