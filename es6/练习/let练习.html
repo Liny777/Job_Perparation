@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <h2 class="page0header">点击切换颜色</h2>
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+    </div>
+   <script>
+    // 获取div元素对象
+    let items = document.getElementsByClassName('item')
+    // 遍历并绑定事件
+    for(var i=0;i<items.length;i++){
+        items[i].onclick = function() {
+            this.style.background = 'pink'
+            // 为什么不直接使用items[i].style.background = 'pink' ?
+            // 因为onclick是回调函数，只有触发的时候才会触发
+            // 这时候会先执行for循环，然后i就变成了3，当你点击的时候
+            // 触发click函数，当时没有一个items[3]这个块，越界了
+            // 所以这里要使用this
+        }
+
+    }
+    // var现在改成let
+    for(let i=0;i<items.length;i++){
+        items[i].onclick = function() {
+            items[i].style.background = 'pink'
+        }
+
+    }
+    // let只在当前作用域内有效
+    // {
+    //     let i=0
+    //     items[i].onclick = function() {
+    //         items[i].style.background = 'pink'
+    //     }
+    // }
+    // {
+    //     let i=1
+    //     items[i].onclick = function() {
+    //         items[i].style.background = 'pink'
+    //     }
+    // }
+    // {
+    //     let i=2
+    //     items[i].onclick = function() {
+    //         items[i].style.background = 'pink'
+    //     }
+    // }
+   </script>
+</body>
+</html>
