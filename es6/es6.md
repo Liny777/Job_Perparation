@@ -130,8 +130,26 @@ let Person = (name,age) => {
 let me = new Person('xiao',30)
 console.log(me)   -----  报错，Person is not a constructor
 
+5.3 不能使用arguments变量
+let fn = () => {
+    console.log(arguments)
+}
+fn(1,2,3) ----> 输出argument is not defind
 
+5.4 箭头函数简写
+1) 省略小括号，当形参有且只有一个的时候
+let add = (n) => {   // 可以改成 let add = n => { return n + n }
+    return n+n
+}
+console.log(add(9))
+2) 省略花括号,当代码体只有一条语句的时候，此时return必须省略
+// 而且语句的执行结果就是函数的返回值
+let pow = (n) => { return n*n}
+console.log(pow(9))
 
+箭头函数适合与this无关的回调，定时器，数组方法回调
+箭头函数不适合与this有关的回调 事件回调 对象的方法
+dom回调 因为这样this就指向申明函数的作用域就是window
 
 
 
