@@ -275,7 +275,31 @@ Puzzle有些太复杂，不过可以当作一个小型的JS知识的考验
 https://blog.csdn.net/wuyxinu/article/details/103642800
 常考题
 https://codetop.cc/home
+面试难度排序
+https://www.nowcoder.com/discuss/834967
+前端刷题
+https://learn.freecodecamp.one/
 
 优化
 1、组件太多，所以一个组件一个文件
 2、不写常数，都根据图片或者啥的来计算
+
+整体掌握的技术栈并不全面，但是针对校招也足够了，主要如下：
+
+前端三大件：html, css, javaScript
+前端框架：vue
+计算机网络， 数据结构与算法，以及一点点的操作系统
+node和webpack（了解基本即可）
+html:这个没什么好说的，基本一两天就学完了，面试也不怎么问。在bilibili上看了pink老师的教学视频。
+
+css: 也是先在bilibili上看了pink老师的教学视频，然后尝试着写了个静态网页。后面又看了绿叶学习网的教程，《CSS进阶之旅》《HTNL5+CSS3修炼之道》
+
+javaScript: 可以说JS是前端的重中之重了，也是我接触的第一门编程语言，在JS上面花了比较多的时间。视频：pink，尚硅谷。书籍：《JavaScript高级程序设计》《ES6标准入门》
+
+vue: 比较推荐bilibili上播放量最高的视频，讲得很全，带着入门没问题的。至于源码的学习可以通过看别人总结好的帖子，然后我也看来一本关于源码的书《深入浅出Vue.js》
+
+计算机网络：重中之重，《图解HTTP》《图解TCP/IP》然后多看博客多记忆，计算机网络还是挺多死记硬背的东西。
+
+数据结构与算法：前端对算法难度要求是比较低的，但是在面试中占的权重是很大的，《大话数据结构》《图解算法》《数据结构与算法JavaScript描述》《剑指offer》，推荐几个有用的网站: codetop，leetcode中文网，freecodecamp
+
+https://www.nowcoder.com/discuss/813482?channel=-1&source_id=subject_nctrack
